@@ -39,7 +39,7 @@ export default class AddNote extends Component {
                 return res.json();
             })
             .then(() => {
-                this.context.addFolder(newNote);
+                this.context.addNote(newNote);
                 this.props.history.push('/');
             })
             .catch(error => {
@@ -50,6 +50,7 @@ export default class AddNote extends Component {
 
     render() {
         const { folders } = this.context;
+        console.log(folders);
         return (
             <form onSubmit={e => this.handleAddNote(e)}>
                 <div>
@@ -61,8 +62,8 @@ export default class AddNote extends Component {
                     <input type='text' id='noteName' value={this.state.content} onChange={ e => this.setState({content: e.target.value})} />
                 </div>
                 <div>
-                    <select name='Choose folder...' onChange={ e => this.setState({folderId: e.target.value})}>
-                        {folders.map(folder => <option value={folder.id}>{folder.name}</option>)}
+                    <select name='Choose folder...' value={this.state.folderId} onChange={ e => this.setState({folderId: e.target.value})}>
+                        {folders.map((folder) => <option key={folder.id} value={folder.id}>{folder.name}</option>)}
                     </select>
                 </div>
                 <div>
