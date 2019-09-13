@@ -96,8 +96,8 @@ export default class AddNote extends Component {
                     <select name='Choose folder...' value={this.state.folderId} onChange={ e => this.setState({folderId: e.target.value})}>
                         <option key="default" value={null}>Select folder</option>
                         {folders.map((folder) => <option key={folder.id} value={folder.id}>{folder.name}</option>)}
-                        {this.validateFolder && <p>{this.validateFolder()}</p>}
                     </select>
+                    {this.validateFolder && <p>{this.validateFolder()}</p>}
                 </div>
                 <div>
                     <button disabled={this.validateNoteName() || this.validateContent() || this.validateFolder()} type='submit' onClick={ e => this.setState({modified: new Date().toLocaleString()})}>Submit</button>
