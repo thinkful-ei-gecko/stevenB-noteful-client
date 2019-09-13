@@ -14,10 +14,6 @@ export default class AddNote extends Component {
 
     static contextType = ApiContext;
 
-    handleFindFolder = (e) => {
-
-    }
-
     handleAddNote = (e) => {
         e.preventDefault();
         console.log(this.state.name);
