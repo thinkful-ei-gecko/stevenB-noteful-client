@@ -45,7 +45,7 @@ export default class AddFolder extends Component {
       <form onSubmit={e => this.handleAddFolder(e)}>
         <div>
           <label htmlFor="folderName">New Folder Name: </label>
-          <input type="text" id="folderName" value={this.state.folderName} defaultValue="NewFolder" onChange={e => this.setState({name: e.target.value})} />
+          <input type="text" id="folderName" value={this.state.name} defaultValue="NewFolder" onChange={e => this.setState({name: e.target.value})} />
           <button type="submit">Submit</button>
         </div>
       </form>
