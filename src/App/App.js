@@ -6,7 +6,6 @@ import NotePageNav from '../NotePageNav/NotePageNav';
 import NoteListMain from '../NoteListMain/NoteListMain';
 import NotePageMain from '../NotePageMain/NotePageMain';
 import AddFolder from '../AddFolder';
-import cuid from 'cuid';
 import ApiContext from '../ApiContext';
 import config from '../config';
 import './App.css';
@@ -48,10 +47,7 @@ class App extends Component {
         this.setState({
             folders: [
             {...this.state.folders},
-            {
-                name: newFolder,
-                id: cuid()
-            }
+            newFolder
             ]
         })
     }
@@ -97,6 +93,7 @@ class App extends Component {
             folders: this.state.folders,
             deleteNote: this.handleDeleteNote,
             addFolder: this.addNewFolder
+            
         };
         return (
             <ApiContext.Provider value={value}>
