@@ -12,13 +12,11 @@ export default class AddFolder extends Component {
 
   handleAddFolder = (e) => {
     e.preventDefault();
-    console.log(this.state.name);
 
     const newFolder = {
       id: cuid(),
       name: this.state.name
     };
-    console.log(newFolder)
 
     fetch(`${config.API_ENDPOINT}/folders`, {
       method: "POST",

@@ -79,7 +79,7 @@ export default class AddNote extends Component {
  
     render() {
         const { folders } = this.context;
-        console.log(folders);
+
         return (
             <form onSubmit={e => this.handleAddNote(e)}>
                 <div>
