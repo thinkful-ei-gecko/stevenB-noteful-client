@@ -36,7 +36,7 @@ class App extends Component {
         this.setState({ notes, folders });
       })
       .catch(error => {
-        console.error({ error });
+        alert({ error });
       });
   }
 
@@ -107,8 +107,8 @@ class App extends Component {
       deleteNote: this.handleDeleteNote,
       addFolder: this.addNewFolder,
       addNote: this.addNewNote
-
     };
+
     return (
       <ApiContext.Provider value={value}>
         <div className="App">

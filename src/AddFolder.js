@@ -35,7 +35,7 @@ export default class AddFolder extends Component {
         this.props.history.push('/');
       })
       .catch(error => {
-        console.error({ error });
+        alert({ error });
       });
   };
 
@@ -68,5 +68,6 @@ export default class AddFolder extends Component {
 }
 
 AddFolder.propTypes = {
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  name: PropTypes.string.isRequired
 }
