@@ -47,6 +47,22 @@ export default class AddNote extends Component {
       });
   };
 
+  getNoteName = (e) => {
+    this.setState({ name: e.target.value });
+  }
+
+  getNoteContent = (e) => {
+    this.setState({ content: e.target.value });
+  }
+
+  getNoteModified = (e) => {
+    this.setState({ modified: new Date().toLocaleString() });
+  }
+
+  getNoteFolderId = (e) => {
+    this.setState({ folderId: e.target.value });
+  }
+
   validateNoteName = () => {
     let note = this.state.name;
 
@@ -81,26 +97,30 @@ export default class AddNote extends Component {
     const { folders } = this.context;
 
     return (
-      <form onSubmit={e => this.handleAddNote(e)}>
+      <form className='addNoteOrFolder' onSubmit={e => this.handleAddNote(e)}>
         <div>
           <label htmlFor='noteName'>New Note Name: </label>
-          <input type='text' id='noteName' value={this.state.name} onChange={e => this.setState({ name: e.target.value })} />
+          <input type='text' id='noteName' value={this.state.name} onChange={ this.getNoteName } />
           {this.validateNoteName && <p>{this.validateNoteName()}</p>}
         </div>
         <div>
           <label htmlFor='noteContent'>Content: </label>
-          <input type='text' id='noteName' value={this.state.content} onChange={e => this.setState({ content: e.target.value })} />
+          <input type='text' id='noteName' value={this.state.content} onChange={ this.getNoteContent } />
           {this.validateContent && <p>{this.validateContent()}</p>}
         </div>
         <div>
-          <select name='Choose folder...' value={this.state.folderId} onChange={e => this.setState({ folderId: e.target.value })}>
+          <select name='Choose folder...' value={this.state.folderId} onChange={ this.getNoteFolderId }>
             <option key="default" value={null}>Select folder</option>
             {folders.map((folder) => <option key={folder.id} value={folder.id}>{folder.name}</option>)}
           </select>
           {this.validateFolder && <p>{this.validateFolder()}</p>}
         </div>
         <div>
-          <button disabled={this.validateNoteName() || this.validateContent() || this.validateFolder()} type='submit' onClick={e => this.setState({ modified: new Date().toLocaleString() })}>Submit</button>
+          <button disabled={this.validateNoteName() || this.validateContent() || this.validateFolder()} 
+                  type='submit' 
+                  onClick={ this.getNoteModified }>
+                    Submit
+          </button>
         </div>
       </form>
     );

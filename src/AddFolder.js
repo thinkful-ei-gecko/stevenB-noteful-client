@@ -50,7 +50,7 @@ export default class AddFolder extends Component {
 
   render() {
     return (
-      <form onSubmit={e => this.handleAddFolder(e)}>
+      <form className='addNoteOrFolder' onSubmit={e => this.handleAddFolder(e)}>
         <div>
           <label htmlFor="folderName">New Folder Name: </label>
           <input type="text" id="folderName" value={this.state.name} defaultValue="NewFolder" onChange={e => this.setState({name: e.target.value})} />
