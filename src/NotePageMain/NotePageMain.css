@@ -10,3 +10,12 @@
   color: #3a3939;
   max-width: 380px;
 }
+
+.addNoteOrFolder {
+  color: white;
+  text-align: center;
+}
+
+.validationElement {
+  color: red;
+}

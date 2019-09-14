@@ -101,19 +101,19 @@ export default class AddNote extends Component {
         <div>
           <label htmlFor='noteName'>New Note Name: </label>
           <input type='text' id='noteName' value={this.state.name} onChange={ this.getNoteName } />
-          {this.validateNoteName && <p>{this.validateNoteName()}</p>}
+          {this.validateNoteName && <p className='validationElement'>{this.validateNoteName()}</p>}
         </div>
         <div>
           <label htmlFor='noteContent'>Content: </label>
           <input type='text' id='noteName' value={this.state.content} onChange={ this.getNoteContent } />
-          {this.validateContent && <p>{this.validateContent()}</p>}
+          {this.validateContent && <p className='validationElement'>{this.validateContent()}</p>}
         </div>
         <div>
           <select name='Choose folder...' value={this.state.folderId} onChange={ this.getNoteFolderId }>
             <option key="default" value={null}>Select folder</option>
             {folders.map((folder) => <option key={folder.id} value={folder.id}>{folder.name}</option>)}
           </select>
-          {this.validateFolder && <p>{this.validateFolder()}</p>}
+          {this.validateFolder && <p className='validationElement'>{this.validateFolder()}</p>}
         </div>
         <div>
           <button disabled={this.validateNoteName() || this.validateContent() || this.validateFolder()} 
