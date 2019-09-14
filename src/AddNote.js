@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import config from './config';
 import ApiContext from './ApiContext';
 import cuid from 'cuid';
+import PropTypes from 'prop-types'
 
 export default class AddNote extends Component {
 
@@ -16,7 +17,6 @@ export default class AddNote extends Component {
 
   handleAddNote = (e) => {
     e.preventDefault();
-    console.log(this.state.name);
 
     const newNote = {
       id: cuid(),
@@ -25,7 +25,6 @@ export default class AddNote extends Component {
       content: this.state.content,
       folderId: this.state.folderId
     };
-    console.log(newNote)
 
     fetch(`${config.API_ENDPOINT}/notes`, {
       method: "POST",
@@ -43,7 +42,7 @@ export default class AddNote extends Component {
         this.props.history.push('/');
       })
       .catch(error => {
-        console.error({ error });
+        alert({ error });
       });
   };
 
@@ -125,4 +124,8 @@ export default class AddNote extends Component {
       </form>
     );
   }
+}
+
+AddNote.propTypes = {
+  history: PropTypes.object.isRequired
 }

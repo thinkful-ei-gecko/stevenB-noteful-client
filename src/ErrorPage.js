@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class ErrorPage extends Component {
   state = {
@@ -21,3 +22,7 @@ export default class ErrorPage extends Component {
       return this.props.children;
   }
 }
+
+ErrorPage.propTypes = {
+    children: PropTypes.object.isRequired
+  }

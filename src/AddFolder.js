@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ApiContext from "./ApiContext";
 import config from "./config";
 import cuid from "cuid";
+import PropTypes from 'prop-types';
 
 export default class AddFolder extends Component {
   state = {
@@ -38,6 +39,10 @@ export default class AddFolder extends Component {
       });
   };
 
+  getFolderName = (e) => {
+    this.setState({name: e.target.value});
+  }
+
   validateFolderName = () => {
     let folderName = this.state.name;
 
@@ -53,11 +58,15 @@ export default class AddFolder extends Component {
       <form className='addNoteOrFolder' onSubmit={e => this.handleAddFolder(e)}>
         <div>
           <label htmlFor="folderName">New Folder Name: </label>
-          <input type="text" id="folderName" value={this.state.name} defaultValue="NewFolder" onChange={e => this.setState({name: e.target.value})} />
+          <input type="text" id="folderName" value={this.state.name} onChange={ this.getFolderName } />
           {this.validateFolderName && <p className='validationElement'>{this.validateFolderName()}</p>}
           <button disabled={this.validateFolderName()} type="submit">Submit</button>
         </div>
       </form>
     );
   }
+}
+
+AddFolder.propTypes = {
+  history: PropTypes.object.isRequired
 }
