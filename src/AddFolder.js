@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ApiContext from "./ApiContext";
 import config from "./config";
-import cuid from "cuid";
 import PropTypes from 'prop-types';
 
 export default class AddFolder extends Component {
@@ -15,8 +14,7 @@ export default class AddFolder extends Component {
     e.preventDefault();
 
     const newFolder = {
-      id: cuid(),
-      name: this.state.name
+      folder_name: this.state.name
     };
 
     fetch(`${config.API_ENDPOINT}/folders`, {
@@ -28,7 +26,6 @@ export default class AddFolder extends Component {
     })
       .then(res => {
         if (!res.ok) return res.json().then(e => Promise.reject(e));
-        return res.json();
       })
       .then(() => {
         this.context.addFolder(newFolder);

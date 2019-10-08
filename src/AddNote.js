@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import config from './config';
 import ApiContext from './ApiContext';
-import cuid from 'cuid';
 import PropTypes from 'prop-types'
 
 export default class AddNote extends Component {
@@ -19,11 +18,10 @@ export default class AddNote extends Component {
     e.preventDefault();
 
     const newNote = {
-      id: cuid(),
-      name: this.state.name,
-      modified: this.state.modified,
-      content: this.state.content,
-      folderId: this.state.folderId
+      note_name: this.state.name,
+      date_modified: this.state.modified,
+      note_content: this.state.content,
+      folder_id: this.state.folderId
     };
 
     fetch(`${config.API_ENDPOINT}/notes`, {
@@ -110,7 +108,7 @@ export default class AddNote extends Component {
         <div>
           <select name='Choose folder...' value={this.state.folderId} onChange={ this.getNoteFolderId }>
             <option key="default" value={null}>Select folder</option>
-            {folders.map((folder) => <option key={folder.id} value={folder.id}>{folder.name}</option>)}
+            {folders.map((folder) => <option key={folder.id} value={folder.id}>{folder.folder_name}</option>)}
           </select>
           {this.validateFolder && <p className='validationElement'>{this.validateFolder()}</p>}
         </div>
