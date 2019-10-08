@@ -61,7 +61,7 @@ class App extends Component {
         ...this.state.notes,
         newNote
       ]
-    })
+    }, this.componentDidMount())
   }
 
   renderNavRoutes() {
