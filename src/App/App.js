@@ -52,7 +52,7 @@ class App extends Component {
         ...this.state.folders,
         newFolder
       ]
-    })
+    }, this.componentDidMount())
   }
 
   addNewNote = (newNote) => {

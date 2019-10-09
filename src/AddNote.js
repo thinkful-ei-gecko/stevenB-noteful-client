@@ -107,7 +107,7 @@ export default class AddNote extends Component {
         <div>
           <select name='Choose folder...' value={this.state.folderId} onChange={ this.getNoteFolderId }>
             <option key="default" value={null}>Select folder</option>
-            {folders.map((folder) => <option key={folder.id} value={folder.id}>{folder.folder_name}</option>)}
+            {folders.map((folder) => <option key={Number(folder.id)} value={folder.id}>{folder.folder_name}</option>)}
           </select>
           {this.validateFolder && <p className='validationElement'>{this.validateFolder()}</p>}
         </div>
